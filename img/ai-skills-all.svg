@@ -1,0 +1,21 @@
+<svg width="630" height="185" viewBox="0 0 630 185" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4DD4C8"/>
+      <stop offset="55%" stop-color="#7EC8B8"/>
+      <stop offset="100%" stop-color="#F08868"/>
+    </linearGradient>
+  </defs>
+  <path d="M48,30 Q38,30 38,40 L38,57 L172,57 L172,40 Q172,30 162,30 Z" fill="#F5A0BE"/>
+  <path d="M38,57 L38,122 Q38,132 48,132 L162,132 Q172,132 172,122 L172,57 Z" fill="#1C1F58"/>
+  <circle cx="57" cy="43" r="5.5" fill="#FF5F57"/>
+  <circle cx="72" cy="43" r="5.5" fill="#FFBD2E"/>
+  <circle cx="87" cy="43" r="5.5" fill="#28C840"/>
+  <text x="44" y="108" font-size="64" font-family="monospace" font-weight="bold" fill="#F472B6">&gt;_</text>
+  <g transform="translate(163,113)">
+    <path fill="#9B7FE8" d="M 31.2,-9.1 L 40.3,-9.1 L 40.3,9.1 L 31.2,9.1 L 28.50,15.63 L 34.93,22.06 L 22.06,34.93 L 15.63,28.50 L 9.1,31.2 L 9.1,40.3 L -9.1,40.3 L -9.1,31.2 L -15.63,28.50 L -22.06,34.93 L -34.93,22.06 L -28.50,15.63 L -31.2,9.1 L -40.3,9.1 L -40.3,-9.1 L -31.2,-9.1 L -28.50,-15.63 L -34.93,-22.06 L -22.06,-34.93 L -15.63,-28.50 L -9.1,-31.2 L -9.1,-40.3 L 9.1,-40.3 L 9.1,-31.2 L 15.63,-28.50 L 22.06,-34.93 L 34.93,-22.06 L 28.50,-15.63 Z"/>
+    <circle r="15.6" fill="#FBBF24"/>
+    <circle r="7.8" fill="#F59E0B"/>
+  </g>
+  <text x="220" y="117" font-size="86" font-family="'Nunito','Varela Round','Arial Rounded MT Bold','Trebuchet MS',sans-serif" font-weight="800" fill="url(#tg)">ai-skills</text>
+</svg>
