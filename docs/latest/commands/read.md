@@ -14,9 +14,9 @@ Read skill content to stdout. This command is primarily intended for AI agents t
 aiskills read [skill-names] [options]
 ```
 
-## Interactive Mode
+## Interactive Mode (Recommended)
 
-When run without arguments or flags, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to read:
+When run without arguments or flags, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to read. **This is the easiest way to use this command** — no flags to remember:
 
 ```bash
 aiskills read

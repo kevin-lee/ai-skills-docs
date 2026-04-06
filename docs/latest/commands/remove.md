@@ -14,9 +14,9 @@ Remove installed skills.
 aiskills remove [skill-name] [options]
 ```
 
-## Interactive Mode
+## Interactive Mode (Recommended)
 
-When run without arguments, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to remove:
+When run without arguments, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to remove. **This is the easiest way to use this command** — no flags to remember:
 
 ```bash
 aiskills remove
