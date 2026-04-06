@@ -17,3 +17,132 @@ import TabItem from '@theme/TabItem';
 
 [![Hits](https://hits.sh/github.com/kevin-lee/ai-skills.svg)](https://ai-skills.kevinly.dev)
 
+## What is ai-skills?
+
+**ai-skills** is a native CLI tool for managing reusable prompt skills for AI coding agents. It can install and manage AI agent skills (`SKILL.md`) and provides commands to install, list, read, update, sync, and remove skills across project-local and global directories for multiple AI agents.
+
+Built with Scala 3 and Scala Native, it compiles to a standalone binary with no JVM or Node.js runtime required.
+
+### Why ai-skills?
+
+AI coding agents like Claude, Cursor, Codex, Gemini, Windsurf, and Copilot each support skills (reusable prompt instructions), but they store them in different directories. **ai-skills** gives you a single tool to:
+
+- **Install** skills from GitHub repos, Git URLs, or local directories
+- **Sync** skills across multiple agents with one command
+- **Update** all your skills from their original sources
+- **Manage** skills consistently across project and global scopes
+
+## Installation
+
+<Tabs>
+<TabItem value="homebrew" label="Homebrew (macOS / Linux)" default>
+
+Install directly (taps automatically):
+
+```bash
+brew install kevin-lee/tap/ai-skills
+```
+
+Or tap first, then install:
+
+```bash
+brew tap kevin-lee/tap
+brew install ai-skills
+```
+
+</TabItem>
+<TabItem value="github-releases" label="GitHub Releases">
+
+Pre-built binaries are available on the [Releases](https://github.com/kevin-lee/ai-skills/releases) page.
+
+| Platform        | Binary                    |
+|-----------------|---------------------------|
+| macOS 26+ ARM64 | `aiskills-macos-26-arm64` |
+| macOS 15 ARM64  | `aiskills-macos-15-arm64` |
+| Linux ARM64     | `aiskills-linux-arm64`    |
+| Linux x86_64    | `aiskills-linux-x86_64`   |
+
+```bash
+# Example: download and install on macOS ARM64
+curl -L -o aiskills https://github.com/kevin-lee/ai-skills/releases/latest/download/aiskills-macos-26-arm64
+chmod +x aiskills
+sudo mv aiskills /usr/local/bin/
+```
+
+</TabItem>
+</Tabs>
+
+Verify the installation:
+
+```bash
+aiskills --version
+```
+```
+@VERSION@
+```
+
+## Quick Start
+
+### 1. Install skills from a GitHub repo
+
+```bash
+aiskills install owner/repo
+```
+
+An interactive prompt lets you choose which agent(s) and location (project or global) to install to.
+
+e.g.) Install skills from Anthropic's Claude repo:
+
+```bash
+aiskills install anthropic/claude-skills
+```
+
+### 2. List installed skills
+
+```bash
+aiskills list
+```
+
+### 3. Read a skill
+
+Interactive Mode:
+```bash
+aiskills read
+```
+
+Non-Interactive Mode:
+```bash
+aiskills read skill-name --agent claude --project
+```
+
+This outputs the skill content to stdout, intended for AI agents to consume.
+
+### 4. Update all skills
+
+```bash
+aiskills update
+```
+
+Re-fetches skills from their original source.
+
+### 5. Sync skills between agents
+
+Interactive Mode:
+```bash
+aiskills sync
+```
+
+Non-Interactive Mode:
+```bash
+aiskills sync --from project:claude --to cursor --project
+```
+
+Copies skills from one agent's directory to another.
+
+### 6. Remove a skill
+
+```bash
+aiskills remove
+```
+
+Opens an interactive prompt to select skills for removal.
