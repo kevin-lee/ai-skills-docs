@@ -37,9 +37,9 @@ aiskills install ./path/to/skill-directory
 aiskills install ~/my-skills/my-skill
 ```
 
-## Interactive Mode
+## Interactive Mode (Recommended)
 
-When `--agent` is not provided, an interactive prompt lets you choose the target agent(s) and location before cloning/installing:
+When `--agent` is not provided, an interactive prompt lets you choose the target agent(s) and location before cloning/installing. **This is the easiest way to use this command** — no flags to remember:
 
 ```bash
 aiskills install owner/repo

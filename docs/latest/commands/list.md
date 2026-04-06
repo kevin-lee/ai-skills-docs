@@ -14,9 +14,9 @@ List installed skills with optional filtering by scope and agent.
 aiskills list [options]
 ```
 
-## Interactive Mode
+## Interactive Mode (Recommended)
 
-When run without any flags, an interactive prompt lets you choose the scope (project, global, or both) and the agent(s) to display:
+When run without any flags, an interactive prompt lets you choose the scope (project, global, or both) and the agent(s) to display. **This is the easiest way to use this command** — no flags to remember:
 
 ```bash
 aiskills list

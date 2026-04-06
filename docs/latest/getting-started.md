@@ -81,6 +81,20 @@ aiskills --version
 @VERSION@
 ```
 
+## Interactive Mode — The Recommended Way
+
+Most ai-skills commands support **interactive mode** — just run the command without any flags and you'll be guided through each step with prompts. This is the recommended way to use ai-skills, as you don't need to memorise any flags or parameters.
+
+```bash
+aiskills install owner/repo   # Prompts for agent(s) and location
+aiskills list                 # Prompts for scope and agent(s)
+aiskills read                 # Prompts for scope, agent(s), and skill(s)
+aiskills sync                 # Guided wizard for source/target selection
+aiskills remove               # Prompts for scope, agent(s), and skill(s)
+```
+
+For scripting and CI/CD, non-interactive mode is also available — see each command's documentation for the full set of flags.
+
 ## Quick Start
 
 ### 1. Install skills from a GitHub repo

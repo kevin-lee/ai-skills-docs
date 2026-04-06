@@ -14,9 +14,9 @@ Copy skills from one agent's directory to another.
 aiskills sync [skill-names] [options]
 ```
 
-## Interactive Mode
+## Interactive Mode (Recommended)
 
-When run without flags, an interactive wizard guides you through the process:
+When run without flags, an interactive wizard guides you through the process. **This is the easiest way to use this command** — no flags to remember:
 
 ```bash
 aiskills sync
