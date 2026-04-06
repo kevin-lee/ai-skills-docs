@@ -79,7 +79,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/ai-skills-all.svg',
+    image: 'img/ai-skills-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
