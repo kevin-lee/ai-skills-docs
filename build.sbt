@@ -41,6 +41,7 @@ lazy val docs = (project in file("docs-gen-tmp/docs"))
     mdocOut := file("generated-docs/docs"),
     cleanFiles += ((ThisBuild / baseDirectory).value / "generated-docs" / "docs"),
     scalacOptions ~= (_.filter(opt => opt != "-Xfatal-warnings")),
+    mdocExtraArguments ++= Seq("--markdown-extensions", "mdx", "--markdown-extensions", "md", "--markdown-extensions", "html"),
     mdocVariables := {
       val logger = sLog.value
       val latestVersion = docsTools.getTheLatestTaggedVersion(logger.error(_))
