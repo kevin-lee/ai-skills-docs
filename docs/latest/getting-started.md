@@ -33,15 +33,18 @@ AI coding agents like Claude, Cursor, Codex, Gemini, Windsurf, and Copilot each 
 - **Manage** skills consistently across project and global scopes
 
 ## Installation
-
 <Tabs>
 <TabItem value="homebrew" label="Homebrew (macOS / Linux)" default>
 
-Install directly (taps automatically):
+### Install `ai-skills`
+
+Install directly (taps automatically) [**Recommended**]:
 
 ```bash
 brew install kevin-lee/tap/ai-skills
 ```
+
+***
 
 Or tap first, then install:
 
@@ -49,6 +52,13 @@ Or tap first, then install:
 brew tap kevin-lee/tap
 brew install ai-skills
 ```
+
+### Update `ai-skills`
+If it's already installed and you want to update to the latest version,
+```bash
+brew update && brew upgrade ai-skills
+```
+
 
 </TabItem>
 <TabItem value="github-releases" label="GitHub Releases">

@@ -25,6 +25,8 @@ aiskills install owner/repo/skill-name       # A specific skill by path
 
 ### Git URL
 
+In most cases, you don't need this, as `ai-skills` can work out the correct URL for you if you just pass `owner/repo`.
+
 ```bash
 aiskills install https://github.com/owner/repo.git    # HTTPS
 aiskills install git@github.com:owner/repo.git        # SSH
