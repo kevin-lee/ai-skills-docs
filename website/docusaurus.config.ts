@@ -83,6 +83,11 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
     navbar: {
       title: 'AI Skills',
       logo: {
