@@ -152,4 +152,8 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
+if (isSearchable) {
+  config['themeConfig']['algolia'] = algoliaConfig;
+}
+
 export default config;
