@@ -107,9 +107,9 @@ export default function Version(): React.JSX.Element {
   return (
     <Layout
       title="Versions"
-      description="Effectie Versions page listing all documented site versions">
+      description="ai-skills Versions page listing all documented site versions">
       <main className="container margin-vert--lg">
-        <h1>Effectie documentation versions</h1>
+        <h1>ai-skills documentation versions</h1>
 
         {stableVersion && (
           <div className="margin-bottom--lg">
@@ -159,7 +159,7 @@ export default function Version(): React.JSX.Element {
             <h3 id="archive">Past versions (Not maintained anymore)</h3>
             <p>
               Here you can find documentation for previous versions of
-              Effectie.
+              ai-skills.
             </p>
             <table>
               <tbody>
