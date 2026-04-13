@@ -99,10 +99,11 @@ aiskills --version
 
 ## Interactive Mode — The Recommended Way
 
-Most ai-skills commands support **interactive mode** — just run the command without any flags and you'll be guided through each step with prompts. This is the recommended way to use ai-skills, as you don't need to memorise any flags or parameters.
+Most ai-skills commands support **interactive mode** — just run the command without any flags and you'll be guided through each step with prompts. This is the recommended way to use ai-skills, as you don't need to memorise any flags or parameters. In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all. Multi-select prompts require at least one selection — pressing Enter with nothing selected shows `Please select at least one, or press Ctrl+C to cancel.` instead of cancelling the operation.
 
 ```bash
 aiskills install owner/repo   # Prompts for agent(s) and location
+aiskills search               # Search local skills or the marketplace
 aiskills list                 # Prompts for scope and agent(s)
 aiskills read                 # Prompts for scope, agent(s), and skill(s)
 aiskills sync                 # Guided wizard for source/target selection
@@ -127,13 +128,21 @@ e.g.) Install skills from Anthropic's Claude repo:
 aiskills install anthropic/claude-skills
 ```
 
-### 2. List installed skills
+### 2. Search for skills
+
+```bash
+aiskills search
+```
+
+Search the marketplace or your locally installed skills. After selecting results, you can `read`, `install` (marketplace only), `list`, or `finish`.
+
+### 3. List installed skills
 
 ```bash
 aiskills list
 ```
 
-### 3. Read a skill
+### 4. Read a skill
 
 Interactive Mode:
 ```bash
@@ -147,7 +156,7 @@ aiskills read skill-name --agent claude --project
 
 This outputs the skill content to stdout, intended for AI agents to consume.
 
-### 4. Update all skills
+### 5. Update all skills
 
 ```bash
 aiskills update
@@ -155,7 +164,7 @@ aiskills update
 
 Re-fetches skills from their original source.
 
-### 5. Sync skills between agents
+### 6. Sync skills between agents
 
 Interactive Mode:
 ```bash
@@ -169,7 +178,7 @@ aiskills sync --from project:claude --to cursor --project
 
 Copies skills from one agent's directory to another.
 
-### 6. Remove a skill
+### 7. Remove a skill
 
 ```bash
 aiskills remove

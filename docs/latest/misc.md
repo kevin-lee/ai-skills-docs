@@ -26,3 +26,9 @@ This metadata enables the [`update`](commands/update.md) command to re-fetch ski
 :::info
 Skills installed before source metadata tracking was added will not have a `.aiskills.json` file. Re-install them once to enable updates.
 :::
+
+## Temporary Files
+
+ai-skills creates short-lived working directories during operations like `install` and `update` (for example, when cloning a Git repository). These are placed under the system's temporary directory — `$TMPDIR` if set, falling back to `/tmp` — instead of your home directory.
+
+ai-skills removes these directories automatically when the operation finishes. Anything left behind by an unexpected exit is also cleared by the operating system on reboot, since the system temporary directory is ephemeral.

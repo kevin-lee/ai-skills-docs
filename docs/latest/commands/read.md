@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 id: read
 title: read
 ---
@@ -24,6 +24,10 @@ aiskills read
 
 :::note
 Running `aiskills read` with flags but without skill names is an error. Flags are only valid with skill names.
+:::
+
+:::note Tip
+In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all.
 :::
 
 ## Non-Interactive Mode
@@ -63,11 +67,15 @@ When reading multiple skills, a visual separator is displayed between each skill
 
 ## Output
 
-The output includes the skill's base directory (for resolving relative references to bundled resources) followed by the full `SKILL.md` content:
+The output starts with metadata about the skill, followed by the full `SKILL.md` content. Paths under your home directory are abbreviated with `~/`.
 
 ```
-       Reading: commit
-Base directory: /path/to/.claude/skills/commit
+         Reading: commit
+  Base directory: ~/git/username/path/to/project/.claude/skills/commit
+      sourceType: git
+          source: owner/commit-skills
+         subpath: skills/commit
+            name: commit
 
 ---
 name: commit
@@ -78,3 +86,14 @@ description: Write conventional commit messages
 
 Skill read: commit
 ```
+
+### Output Field Reference
+
+| Field            | Meaning                                                            |
+|------------------|--------------------------------------------------------------------|
+| `Reading`        | The skill name as installed (its directory name)                   |
+| `Base directory` | Path to the skill on disk (uses `~/` for paths under your home)    |
+| `sourceType`     | Origin type: `git` or `local`                                      |
+| `source`         | Origin reference (e.g. `owner/repo` for git, a path for local)     |
+| `subpath`        | Path within the source where `SKILL.md` lives                      |
+| `name`           | The `name` field from `SKILL.md` (may differ from the folder name) |

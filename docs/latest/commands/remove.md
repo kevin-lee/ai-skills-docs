@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 id: remove
 title: remove
 ---
@@ -27,6 +27,11 @@ The interactive flow is:
 1. **Select scope** — `project`, `global`, or `both`
 2. **Select agent(s)** — filtered to agents that have skills in the selected scope
 3. **Select skill(s) to remove** — multi-select prompt
+4. **Confirm removal** — final `Are you sure? (y/N)` prompt before deletion
+
+:::note Tip
+In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all.
+:::
 
 ## Non-Interactive Mode
 
@@ -49,6 +54,7 @@ aiskills remove commit --agent all --project --global            # Everywhere, a
 | `--agent <names>` | `-a`  | Target agent(s), comma-separated or `all` |
 | `--project`       | `-p`  | Remove from project scope                 |
 | `--global`        | `-g`  | Remove from global scope                  |
+| `--yes`           | `-y`  | Skip the final confirmation prompt        |
 
 ### Valid Agent Names
 
@@ -64,10 +70,31 @@ aiskills remove commit --project          # ERROR: must specify --agent
 aiskills remove --agent claude --project  # ERROR: must specify skill name
 ```
 
+## Confirmation
+
+Before any skill is removed, ai-skills lists the selected skills and asks for confirmation:
+
+```
+✔ Select skills to remove
+ ◉ ai-pdf-filler-cli         (project, Gemini): .gemini/skills
+
+The following skill(s) will be removed:
+  - ai-pdf-filler-cli (project, Gemini): .gemini/skills
+
+? Are you sure? › (y/N)
+```
+
+Pass `--yes` (or `-y`) to skip this prompt. This is useful for scripted/non-interactive use.
+
 ## Output
 
 ```
 ✅ Removed: commit (project, Claude): .claude/skills
+  Base directory: ~/git/username/path/to/project/.claude/skills/commit
+      sourceType: git
+          source: owner/commit-skills
+         subpath: skills/commit
+            name: commit
 
 ✅ Removed 1 skill(s)
 ```

@@ -24,6 +24,10 @@ aiskills list
 
 If skills exist in only one scope or for only one agent, that selection is made automatically.
 
+:::note Tip
+In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all.
+:::
+
 ## Non-Interactive Mode
 
 Use `--project` and/or `--global` to specify the scope. When `--agent` is provided, `--project` and/or `--global` must also be specified.
@@ -52,16 +56,28 @@ aiskills list --agent all --project --global     # Both scopes, all agents
 
 ## Output
 
-The output displays each skill's name, scope, agent, and directory path:
+The output displays each skill with its scope, agent, directory path, and source metadata:
 
 ```
 Available Skills:
 
   commit                    (project, Claude): .claude/skills
+  Base directory: ~/git/username/path/to/project/.claude/skills/commit
+      sourceType: git
+          source: owner/commit-skills
+         subpath: skills/commit
+            name: commit
     Write conventional commit messages
 
-  review-pr                 (global, Claude): ~/.claude/skills
-    Review pull requests for best practices
+  pdf                       (project, Gemini): .gemini/skills
+  Base directory: ~/git/username/path/to/project/.gemini/skills/pdf
+      sourceType: git
+          source: anthropics/skills
+         subpath: skills/pdf
+            name: pdf
+    Use this skill whenever the user wants to do anything with PDF files.
 
-Summary: 1 project, 1 global (2 total)
+Summary: 2 project, 0 global (2 total)
 ```
+
+See [`read`](./read.md) for the meaning of each metadata field.

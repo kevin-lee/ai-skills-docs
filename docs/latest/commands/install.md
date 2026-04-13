@@ -49,6 +49,12 @@ aiskills install owner/repo
 
 The prompts appear **before** the repository is cloned, so you don't need to wait for the clone to complete before making your selections.
 
+The location prompt is a single-choice prompt with the options `global`, `project`, and `both`. Multi-select prompts (target agent selection, skill selection) require at least one item — pressing Enter with nothing selected no longer cancels the operation; instead it shows `Please select at least one, or press Ctrl+C to cancel.`
+
+:::note Tip
+In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all.
+:::
+
 ## Non-Interactive Mode
 
 Specify `--agent` along with `--project` and/or `--global`:
@@ -85,6 +91,14 @@ aiskills install owner/repo                    # Prompted to select skills
 aiskills install owner/repo -y                 # Install all skills without prompting
 ```
 
+## Skill Selection — Subpath Display
+
+When multiple skills in a repository share the same name, each entry in the selection list also shows its subpath within the repository. This makes it easy to tell otherwise identical-looking entries apart so you can pick the one you want.
+
+## Duplicate Skill Names — Rename
+
+When the skill you are installing has a name that conflicts with an existing one — either with a skill already installed at the target location, or with another skill being installed in the same run — an interactive prompt offers to rename it. This lets you, for example, install the same skill more than once under different names, or keep both your existing version and a new one side by side.
+
 ## Overwrite Behavior
 
 If a skill with the same name already exists at the target location, you are prompted with:
@@ -98,7 +112,7 @@ Use `--yes` to automatically overwrite all existing skills without prompting.
 
 ## Private Repositories
 
-When installing from a GitHub HTTPS URL, if the clone fails (e.g. the repo is private), ai-skills automatically falls back to the equivalent SSH URL (`git@github.com:owner/repo.git`). Ensure your SSH keys are configured for this to work.
+When installing from a GitHub HTTPS URL, if the clone fails (e.g. the repo is private), ai-skills automatically falls back to the equivalent SSH URL (`git@github.com:owner/repo.git`). For known private flows, ai-skills can also clone using scp-like SSH syntax directly instead of an HTTPS URL, avoiding the password prompt or hang that an HTTPS clone of a private repo would otherwise cause. Ensure your SSH keys are configured for this to work.
 
 ```bash
 # These all work with private repos if SSH is configured:
