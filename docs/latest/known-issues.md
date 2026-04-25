@@ -8,6 +8,10 @@ title: Known Issues
 
 This page lists known issues that may affect your experience with ai-skills. Most are caused by upstream dependencies and are tracked accordingly.
 
+:::warning note
+This known issue has been resolved since `2.7.0`.
+:::
+
 ## Multi-Choice List Rendering
 
 When ai-skills displays an interactive multi-choice list — used in commands like `install`, `list`, `read`, `remove`, `sync`, and `search` — the list may render incorrectly if there is not enough vertical space below the cursor in your terminal.
