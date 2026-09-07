@@ -16,7 +16,7 @@ aiskills remove [skill-name] [options]
 
 ## Interactive Mode (Recommended)
 
-When run without arguments, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to remove. **This is the easiest way to use this command** — no flags to remember:
+When run without arguments, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to remove. **This is the easiest way to use this command** - no flags to remember:
 
 ```bash
 aiskills remove
@@ -24,10 +24,10 @@ aiskills remove
 
 The interactive flow is:
 
-1. **Select scope** — `project`, `global`, or `both`
-2. **Select agent(s)** — filtered to agents that have skills in the selected scope
-3. **Select skill(s) to remove** — multi-select prompt
-4. **Confirm removal** — final `Are you sure? (y/N)` prompt before deletion
+1. **Select scope** - `project`, `global`, or `both`
+2. **Select agent(s)** - filtered to agents that have skills in the selected scope
+3. **Select skill(s) to remove** - multi-select prompt
+4. **Confirm removal** - final `Are you sure? (y/N)` prompt before deletion
 
 :::note Tip
 In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all.

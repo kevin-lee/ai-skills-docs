@@ -16,7 +16,7 @@ aiskills sync [skill-names] [options]
 
 ## Interactive Mode (Recommended)
 
-When run without flags, an interactive wizard guides you through the process. **This is the easiest way to use this command** — no flags to remember:
+When run without flags, an interactive wizard guides you through the process. **This is the easiest way to use this command** - no flags to remember:
 
 ```bash
 aiskills sync
@@ -24,14 +24,14 @@ aiskills sync
 
 The interactive flow is:
 
-1. **Select source location** — `project` or `global`
-2. **Select source agent** — filtered to agents that have skills in the selected location
-3. **Select skills to sync** — multi-select with all skills pre-selected
-4. **Select target location** — `project`, `global`, or `both`
-5. **Select target agent(s)** — all agents except the source agent
+1. **Select source location** - `project` or `global`
+2. **Select source agent** - filtered to agents that have skills in the selected location
+3. **Select skills to sync** - multi-select with all skills pre-selected
+4. **Select target location** - `project`, `global`, or `both`
+5. **Select target agent(s)** - all agents except the source agent
 
 :::note Tip
-In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all. Multi-select prompts require at least one item — pressing Enter with nothing selected shows `Please select at least one, or press Ctrl+C to cancel.` instead of cancelling the operation.
+In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all. Multi-select prompts require at least one item - pressing Enter with nothing selected shows `Please select at least one, or press Ctrl+C to cancel.` instead of cancelling the operation.
 :::
 
 ## Non-Interactive Mode
@@ -80,16 +80,16 @@ Examples: `project:claude`, `global:universal`, `global:cursor`
 
 If a skill already exists in the target agent's directory, you are prompted with:
 
-- **Yes** — overwrite this skill
-- **No** — skip this skill
-- **Yes to all** — overwrite this and all remaining conflicts
-- **No to all** — skip this and all remaining conflicts
+- **Yes** - overwrite this skill
+- **No** - skip this skill
+- **Yes to all** - overwrite this and all remaining conflicts
+- **No to all** - skip this and all remaining conflicts
 
 Use `--yes` to automatically overwrite without prompting.
 
-## Duplicate Skill Names — Rename
+## Duplicate Skill Names - Rename
 
-When a synced skill's name conflicts with an existing one in the target — either with a skill already there, or with another skill being synced in the same run — an interactive prompt offers to rename it. This mirrors the behavior of [`install`](./install.md), letting you, for example, keep both your existing skill and the synced copy under different names.
+When a synced skill's name conflicts with an existing one in the target - either with a skill already there, or with another skill being synced in the same run - an interactive prompt offers to rename it. This mirrors the behavior of [`install`](./install.md), letting you, for example, keep both your existing skill and the synced copy under different names.
 
 ## Examples
 

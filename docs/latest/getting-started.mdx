@@ -28,6 +28,7 @@ Built with Scala 3 and Scala Native, it compiles to a standalone binary with no 
 AI coding agents like Claude, Cursor, Codex, Gemini, Windsurf, and Copilot each support skills (reusable prompt instructions), but they store them in different directories. **ai-skills** gives you a single tool to:
 
 - **Install** skills from GitHub repos, Git URLs, or local directories
+- **Search** the skills.sh and agentskill.sh marketplaces, or your own installed skills
 - **Sync** skills across multiple agents with one command
 - **Update** all your skills from their original sources
 - **Manage** skills consistently across project and global scopes
@@ -75,6 +76,7 @@ Pre-built binaries are available on the [Releases](https://github.com/kevin-lee/
 |-----------------|---------------------------|
 | macOS 26+ ARM64 | `aiskills-macos-26-arm64` |
 | macOS 15 ARM64  | `aiskills-macos-15-arm64` |
+| macOS 15 Intel  | `aiskills-macos-15-intel` |
 | Linux ARM64     | `aiskills-linux-arm64`    |
 | Linux x86_64    | `aiskills-linux-x86_64`   |
 
@@ -97,9 +99,9 @@ aiskills --version
 @VERSION@
 ```
 
-## Interactive Mode — The Recommended Way
+## Interactive Mode - The Recommended Way
 
-Most ai-skills commands support **interactive mode** — just run the command without any flags and you'll be guided through each step with prompts. This is the recommended way to use ai-skills, as you don't need to memorise any flags or parameters. In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all. Multi-select prompts require at least one selection — pressing Enter with nothing selected shows `Please select at least one, or press Ctrl+C to cancel.` instead of cancelling the operation.
+Most ai-skills commands support **interactive mode** - just run the command without any flags and you'll be guided through each step with prompts. This is the recommended way to use ai-skills, as you don't need to memorise any flags or parameters. In any multi-select prompt, press **Shift+Tab** to toggle select/deselect all. Multi-select prompts require at least one selection - pressing Enter with nothing selected shows `Please select at least one, or press Ctrl+C to cancel.` instead of cancelling the operation.
 
 ```bash
 aiskills install owner/repo   # Prompts for agent(s) and location
@@ -110,7 +112,7 @@ aiskills sync                 # Guided wizard for source/target selection
 aiskills remove               # Prompts for scope, agent(s), and skill(s)
 ```
 
-For scripting and CI/CD, non-interactive mode is also available — see each command's documentation for the full set of flags.
+For scripting and CI/CD, non-interactive mode is also available - see each command's documentation for the full set of flags.
 
 ## Quick Start
 
@@ -122,11 +124,19 @@ aiskills install owner/repo
 
 An interactive prompt lets you choose which agent(s) and location (project or global) to install to.
 
-e.g.) Install skills from Anthropic's Claude repo:
+e.g.) Install skills from Anthropic's skills repo:
 
 ```bash
-aiskills install anthropic/claude-skills
+aiskills install anthropics/skills
 ```
+
+To install from a named Git branch, pass `--branch`:
+
+```bash
+aiskills install owner/repo --branch develop
+```
+
+See [Named Branches](commands/install.md#named-branches) for how the branch is validated and tracked.
 
 ### 2. Search for skills
 
@@ -134,7 +144,7 @@ aiskills install anthropic/claude-skills
 aiskills search
 ```
 
-Search the marketplace or your locally installed skills. After selecting results, you can `read`, `install` (marketplace only), `list`, or `finish`.
+Search the skills.sh and agentskill.sh marketplaces, or your locally installed skills. The query must be at least 2 characters. After selecting results, you can `read`, `install` (marketplace only), `list`, or `finish`.
 
 ### 3. List installed skills
 
