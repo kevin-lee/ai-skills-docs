@@ -16,7 +16,7 @@ aiskills read [skill-names] [options]
 
 ## Interactive Mode (Recommended)
 
-When run without arguments or flags, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to read. **This is the easiest way to use this command** — no flags to remember:
+When run without arguments or flags, an interactive prompt guides you through selecting the scope, agent(s), and skill(s) to read. **This is the easiest way to use this command** - no flags to remember:
 
 ```bash
 aiskills read
@@ -92,8 +92,8 @@ Skill read: commit
 | Field            | Meaning                                                            |
 |------------------|--------------------------------------------------------------------|
 | `Reading`        | The skill name as installed (its directory name)                   |
-| `Base directory` | Path to the skill on disk (uses `~/` for paths under your home)    |
+| `Base directory` | Path to the skill on disk (uses `~/` for paths under your home, and is annotated with `(from $ENV_VAR)` when the agent's [global directory is relocated](../supported-agents.md#custom-global-config-locations)) |
 | `sourceType`     | Origin type: `git` or `local`                                      |
 | `source`         | Origin reference (e.g. `owner/repo` for git, a path for local)     |
-| `subpath`        | Path within the source where `SKILL.md` lives                      |
+| `subpath`        | Path within the source where `SKILL.md` lives. A skill at the repository root shows `<root>` |
 | `name`           | The `name` field from `SKILL.md` (may differ from the folder name) |

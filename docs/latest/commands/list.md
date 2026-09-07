@@ -16,7 +16,7 @@ aiskills list [options]
 
 ## Interactive Mode (Recommended)
 
-When run without any flags, an interactive prompt lets you choose the scope (project, global, or both) and the agent(s) to display. **This is the easiest way to use this command** — no flags to remember:
+When run without any flags, an interactive prompt lets you choose the scope (project, global, or both) and the agent(s) to display. **This is the easiest way to use this command** - no flags to remember:
 
 ```bash
 aiskills list
@@ -81,3 +81,5 @@ Summary: 2 project, 0 global (2 total)
 ```
 
 See [`read`](./read.md) for the meaning of each metadata field.
+
+When an agent's global directory is relocated by its environment variable, the `Base directory` line is annotated with `(from $ENV_VAR)`. See [Custom Global Config Locations](../supported-agents.md#custom-global-config-locations).
