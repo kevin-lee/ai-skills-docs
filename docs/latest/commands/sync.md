@@ -91,6 +91,13 @@ Use `--yes` to automatically overwrite without prompting.
 
 When a synced skill's name conflicts with an existing one in the target - either with a skill already there, or with another skill being synced in the same run - an interactive prompt offers to rename it. This mirrors the behavior of [`install`](./install.md), letting you, for example, keep both your existing skill and the synced copy under different names.
 
+## Copied Files and Metadata
+
+- The skill folder is copied without any entry named `.git`, so a copy never becomes a Git repository of its own.
+- `.aiskills.json` is copied with the skill, so the copy keeps its source and version and can be updated with [`update`](./update.md).
+- `checkedAt` is dropped from copies made into a project directory, so a project that commits its skills does not get a diff on every run.
+- When a skill is synced under a new name, an unedited copy gets a new `installedHash` that includes the renamed `name`. An edited copy keeps its recorded hash, so `update` still reports it as **Local changes** and does not overwrite it without `--force`.
+
 ## Examples
 
 Sync all Claude project skills to Cursor and Windsurf project directories:

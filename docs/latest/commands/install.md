@@ -161,6 +161,12 @@ If a skill with the same name already exists at the target location, you are pro
 
 Use `--yes` to automatically overwrite all existing skills without prompting.
 
+## Installed Copy
+
+The skill folder is copied without any entry named `.git`, at any depth, whether it is a directory or a file. This matters for a skill whose `SKILL.md` is at the root of its repository, and for a local skill folder that is itself a Git working tree. A copied `.git` would make the installed skill a Git repository of its own, and a project that commits its skills would record it as an embedded repository instead of its files. The size shown in the skill selection list skips `.git` as well.
+
+`install` also records the installed version in `.aiskills.json`: `commit` (Git sources only), `sourceHash` and `installedHash`. [`update`](./update.md#version-check) uses them to skip the skill while its source is unchanged and to keep local edits. See [Source Metadata](../misc.md#source-metadata).
+
 ## Private Repositories
 
 When a clone fails (e.g. the repo is private), ai-skills escalates through the available Git

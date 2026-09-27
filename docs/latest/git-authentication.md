@@ -61,8 +61,8 @@ simply runs the full chain, so no migration is needed.
 
 ## Repository URLs
 
-`repoUrl` is always stored in canonical https form for `github.com`, so it no longer flips between
-ssh and https across updates. Legacy records holding an ssh URL are repaired on the next successful
+`repoUrl` is always stored in canonical https form for `github.com`
+(`https://github.com/owner/repo`), so it no longer flips between ssh and https across updates. Legacy records holding an ssh URL are repaired on the next successful
 update.
 
 ## Non-GitHub Remotes
