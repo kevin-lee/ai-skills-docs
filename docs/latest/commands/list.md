@@ -66,6 +66,8 @@ Available Skills:
       sourceType: git
           source: owner/commit-skills
          subpath: skills/commit
+          commit: 3f9c2a1d8e7b6c5a4f3e2d1c0b9a8f7e6d5c4b3a
+      sourceHash: 5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e
             name: commit
     Write conventional commit messages
 
@@ -74,12 +76,14 @@ Available Skills:
       sourceType: git
           source: anthropics/skills
          subpath: skills/pdf
+          commit: 8c1e4b7a2d5f9e3c6b0a4d8f2e7c1b5a9d3f6e0c
+      sourceHash: b2d4f6a8c0e2a4c6e8b0d2f4a6c8e0b2d4f6a8c0
             name: pdf
     Use this skill whenever the user wants to do anything with PDF files.
 
 Summary: 2 project, 0 global (2 total)
 ```
 
-See [`read`](./read.md) for the meaning of each metadata field.
+See [`read`](./read.md) for the meaning of each metadata field. `commit`, `sourceHash` and `checkedAt` are shown only when they are recorded.
 
 When an agent's global directory is relocated by its environment variable, the `Base directory` line is annotated with `(from $ENV_VAR)`. See [Custom Global Config Locations](../supported-agents.md#custom-global-config-locations).

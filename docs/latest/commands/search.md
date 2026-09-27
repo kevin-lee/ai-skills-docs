@@ -130,9 +130,13 @@ Found 1 matching skill(s) for 'pdf':
       sourceType: git
           source: claude-office-skills/skills
          subpath: pdf-converter
+          commit: 0a7d3e9c5b1f8a2d6e4c0b9f3a7e1d5c8b2f6a4e
+      sourceHash: e1c3a5b7d9f1e3c5a7b9d1f3e5c7a9b1d3f5e7a9
             name: PDF Converter
     Convert PDFs to other formats and back.
 ```
+
+The metadata block is the same one [`read`](./read.md) shows, so `commit`, `sourceHash` and `checkedAt` appear when they are recorded.
 
 ## Post-Search Actions
 
@@ -145,4 +149,4 @@ After you select skills from the results, ai-skills asks what you want to do wit
 
 `read` and `list` loop back to the action menu so you can perform multiple actions on the same selection. `install` and `finish` end the flow. For local results, `install` is not offered because the skills are already installed.
 
-The `install` action clones through the same [Git authentication](../git-authentication.md) fallback chain that [`install`](./install.md) uses.
+The `install` action clones through the same [Git authentication](../git-authentication.md) fallback chain that [`install`](./install.md) uses. Like `install`, it copies the skill without `.git` and records its version, so [`update`](./update.md#version-check) can skip it while its source is unchanged.

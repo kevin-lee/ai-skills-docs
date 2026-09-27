@@ -30,7 +30,7 @@ AI coding agents like Claude, Cursor, Codex, Gemini, Windsurf, and Copilot each 
 - **Install** skills from GitHub repos, Git URLs, or local directories
 - **Search** the skills.sh and agentskill.sh marketplaces, or your own installed skills
 - **Sync** skills across multiple agents with one command
-- **Update** all your skills from their original sources
+- **Update** your skills from their original sources, skipping unchanged ones and keeping local edits
 - **Manage** skills consistently across project and global scopes
 
 <iframe width="100%" style={{"aspect-ratio": "12 / 9"}}
@@ -172,7 +172,7 @@ This outputs the skill content to stdout, intended for AI agents to consume.
 aiskills update
 ```
 
-Re-fetches skills from their original source.
+Checks each skill against its original source and replaces only the ones that changed. Skills you edited locally are kept. Use `--force` to update regardless. See [`update`](commands/update.md) for the result lines.
 
 ### 6. Sync skills between agents
 

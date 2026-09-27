@@ -75,6 +75,8 @@ The output starts with metadata about the skill, followed by the full `SKILL.md`
       sourceType: git
           source: owner/commit-skills
          subpath: skills/commit
+          commit: 3f9c2a1d8e7b6c5a4f3e2d1c0b9a8f7e6d5c4b3a
+      sourceHash: 5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e
             name: commit
 
 ---
@@ -96,4 +98,9 @@ Skill read: commit
 | `sourceType`     | Origin type: `git` or `local`                                      |
 | `source`         | Origin reference (e.g. `owner/repo` for git, a path for local)     |
 | `subpath`        | Path within the source where `SKILL.md` lives. A skill at the repository root shows `<root>` |
+| `commit`         | The Git commit the installed content came from (Git sources only)  |
+| `sourceHash`     | The recorded version of the skill: the Git tree hash of its source folder. See [Version Check](./update.md#version-check) |
+| `checkedAt`      | When `update` last checked the skill (global skills only)          |
 | `name`           | The `name` field from `SKILL.md` (may differ from the folder name) |
+
+`commit`, `sourceHash` and `checkedAt` are shown only when they are recorded. Skills installed by 2.10.0 or earlier show them after their next update.
