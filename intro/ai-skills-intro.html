@@ -186,6 +186,11 @@ body.idle { cursor: none; }
 #start { position: fixed; inset: 0; display: grid; place-items: center; background: rgba(5,6,12,.35); }
 #start button { font-size: 22px; font-weight: 700; padding: 18px 36px; border-radius: 999px; background: var(--peach); color: var(--ink); border: 0; box-shadow: 0 10px 40px rgba(255,179,138,.4); }
 body.capture #ui, body.capture #start { display: none; }
+@media (max-width: 560px) {
+  #ui { gap: 8px; padding: 10px; font-size: 12px; }
+  #ui button { padding: 6px 9px; }
+  #time { display: none; }
+}
 </style>
 </head>
 <body>
@@ -942,28 +947,79 @@ function tick() {
   $("play").textContent = aud.paused ? "Play" : "Pause";
   if (!capture) requestAnimationFrame(tick);
 }
+let running = false;
+function run() { if (!running) { running = true; requestAnimationFrame(tick); } }
 function toggle() {
   $("start").style.display = "none";
   if (aud.ended || aud.currentTime >= DUR - .05) aud.currentTime = 0;
   aud.paused ? aud.play() : aud.pause();
 }
+
+/* Fullscreen. Desktop, Android and iPad browsers have the Fullscreen API. iPhone Safari has none
+   for pages, so in an iframe the intro asks the host page through postMessage to expand the iframe
+   over the viewport. A host that does this answers with its state, see the ai-skills docs home page.
+   On touch screens, Play goes fullscreen and the end of the intro leaves it. */
+const MSG = "ai-skills-intro";
+const embedded = window.parent !== window;
+const touch = matchMedia("(hover: none) and (pointer: coarse)").matches;
+const fsApi = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+let hostFs = null;  // the host page's expanded state, null until a host answers
+const isFs = () => fsApi ? !!(document.fullscreenElement || document.webkitFullscreenElement) : hostFs === true;
+function setFs(on) {
+  if (on === isFs()) return;
+  if (fsApi) {
+    const el = document.documentElement;
+    const call = on ? (el.requestFullscreen || el.webkitRequestFullscreen).bind(el)
+                    : (document.exitFullscreen || document.webkitExitFullscreen).bind(document);
+    new Promise(res => res(call()))
+      .then(() => on && touch && screen.orientation.lock("landscape"))
+      .catch(() => {});
+  } else if (hostFs !== null) {
+    parent.postMessage({ type: MSG, fullscreen: on }, "*");
+  }
+}
+function showFs() {
+  $("fs").hidden = !fsApi && hostFs === null;
+  $("fs").textContent = isFs() ? "Exit fullscreen" : "Fullscreen";
+}
+function play() {
+  const starting = aud.paused;
+  toggle();
+  if (touch && starting) setFs(true);
+}
+
 if (!capture) {
   renderAt(19.2);
   document.fonts.ready.then(() => renderAt(19.2));
-  $("startBtn").onclick = () => { aud.currentTime = 0; toggle(); requestAnimationFrame(tick); };
-  $("play").onclick = toggle;
+  $("startBtn").onclick = () => { aud.currentTime = 0; play(); run(); };
+  $("play").onclick = play;
   $("cc").onclick = () => { capOn = !capOn; $("cc").setAttribute("aria-pressed", String(capOn)); };
-  $("fs").onclick = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
-  $("bar").onclick = e => { const r = $("bar").getBoundingClientRect(); aud.currentTime = DUR * clamp((e.clientX - r.left) / r.width); $("start").style.display = "none"; requestAnimationFrame(tick); };
+  $("fs").onclick = () => setFs(!isFs());
+  $("bar").onclick = e => { const r = $("bar").getBoundingClientRect(); aud.currentTime = DUR * clamp((e.clientX - r.left) / r.width); $("start").style.display = "none"; run(); };
+  aud.addEventListener("ended", () => touch && setFs(false));
+  for (const ev of ["fullscreenchange", "webkitfullscreenchange"]) {
+    document.addEventListener(ev, () => {
+      showFs();
+      if (!isFs()) try { screen.orientation.unlock(); } catch (_) { /* not supported */ }
+    });
+  }
+  addEventListener("message", e => {
+    if (embedded && e.source === parent && e.data && e.data.type === MSG) { hostFs = !!e.data.fullscreen; showFs(); }
+  });
+  if (embedded) parent.postMessage({ type: MSG }, "*");
+  showFs();
   addEventListener("keydown", e => {
     if (e.code === "Space") { e.preventDefault(); if ($("start").style.display !== "none") $("startBtn").click(); else toggle(); }
     if (e.code === "ArrowRight") aud.currentTime = Math.min(DUR, aud.currentTime + 5);
     if (e.code === "ArrowLeft") aud.currentTime = Math.max(0, aud.currentTime - 5);
     if (e.key === "c") $("cc").click();
     if (e.key === "f") $("fs").click();
+    if (e.key === "Escape") setFs(false);
   });
   let idle;
-  addEventListener("mousemove", () => { document.body.classList.remove("idle"); clearTimeout(idle); idle = setTimeout(() => !aud.paused && document.body.classList.add("idle"), 2000); });
+  const wake = () => { document.body.classList.remove("idle"); clearTimeout(idle); idle = setTimeout(() => !aud.paused && document.body.classList.add("idle"), 2000); };
+  addEventListener("mousemove", wake);
+  addEventListener("touchstart", wake, { passive: true });
 }
 </script>
 </body>
