@@ -22,9 +22,16 @@
   justify-content: center;
 }
 
+/* A block, so no line box space is left under the logo above the intro. */
+.logo {
+  display: block;
+  margin: 0 auto;
+}
+
+/* No top margin, the logo SVG already has empty space under the artwork. */
 .intro {
   max-width: 960px;
-  margin: 2.5rem auto 0;
+  margin: 0 auto 2.5rem;
   aspect-ratio: 16 / 9;
   border-radius: 16px;
   overflow: hidden;
@@ -36,4 +43,17 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Fills the viewport when the intro asks for it on phones without the Fullscreen API. */
+.introExpanded {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  max-width: none;
+  margin: 0;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+  background: #000;
 }
