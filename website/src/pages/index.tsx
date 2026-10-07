@@ -9,7 +9,8 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 
-const INTRO_MESSAGE = 'ai-skills-intro';
+// The message type the intro player (made with gen-motion-graphics) uses to talk to the host page.
+const INTRO_MESSAGE = 'gen-motion-graphics';
 
 // The intro uses the Fullscreen API where the browser has it. iPhone Safari has none for pages,
 // so there the intro asks through postMessage to be expanded over the viewport, which is done here.
