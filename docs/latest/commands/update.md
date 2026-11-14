@@ -32,11 +32,29 @@ aiskills update commit review-pr             # Update specific skills
 aiskills update --force commit               # Update even if unchanged or locally edited
 ```
 
+### Choose the Scope
+
+When the skills to update exist in both global and project scope, `update` asks the scope (`global`, `project` or `both`). With skill names, it asks only when the named skills exist in both scopes. When they exist in one scope only, that scope is used without a prompt.
+
+Use `--project` (`-p`) and/or `--global` (`-g`) to choose the scope without a prompt:
+
+```bash
+aiskills update --project          # Project skills only
+aiskills update --global commit    # The commit skill in global scope only
+aiskills update --project --global # Both scopes
+```
+
+Without terminal input (for example in Continuous Integration (CI)) and without these flags, both scopes are updated.
+
 ## Options
 
-| Flag      | Short | Description                                                 |
-|-----------|-------|-------------------------------------------------------------|
-| `--force` | `-f`  | Update even when a skill is up to date or has local changes |
+| Flag        | Short | Description                                                 |
+|-------------|-------|-------------------------------------------------------------|
+| `--force`   | `-f`  | Update even when a skill is up to date or has local changes |
+| `--project` | `-p`  | Update project skills only                                  |
+| `--global`  | `-g`  | Update global skills only                                   |
+
+Use both `--project` and `--global` to update both scopes without a prompt.
 
 ## How It Works
 
